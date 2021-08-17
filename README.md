@@ -34,7 +34,7 @@
 [![Product Name Screen Shot][product-screenshot]](https://isan.to)
 
   <p align="center">
-    A 3D public map for the game Starbase. 
+    A 3D public map for the game Starbase.
     <br>Additionally includes support for creating private maps
     <br />
     <br>
@@ -53,12 +53,12 @@ ISAN Starmap is a navigation system developed for the purpose storing and calcul
 
 <br>
 
-_For a more descriptive explanation about the ISAN Starmap please read the: 
+_For a more descriptive explanation about the ISAN Starmap please read the:
 [ISAN Documentation](https://github.com/Collective-SB/Starmap/blob/master/public/isan.pdf)_
 
 </p>
 
-<!-- TABLE OF CONTENTS 
+<!-- TABLE OF CONTENTS
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
@@ -90,6 +90,35 @@ _For a more descriptive explanation about the ISAN Starmap please read the:
 
 To play around with a local copy of <strong>`ISAN Starmap`</strong> run these following steps.
 
+## Using Docker
+
+### Prerequisites
+
+Ensure you have docker installed on your computer: https://www.docker.com/
+
+### Installation
+
+ 1.  Clone the repo using the command:
+    ```sh
+    git clone https://github.com/Collective-SB/Starmap
+    ```
+ 2. In the new directory <strong>`/Starmap`</strong> run the command:
+    ```sh
+    docker build -t starmap
+    ```
+ 2. (bis): If you want to call another remote point than local you can change the options at build time with the command:
+    ```sh
+    docker build -t starmap --build-arg ENV_FROM_ENVJS="remoteDev" --build-arg AUTH_REDIR_FROM_ENVJS="remoteDev" .
+    ```
+ 3. Now you can run the command:
+    ```sh
+    docker run -p 8000:443 -d starmap
+    ```
+ 4. Finally to test that it is working, In your browser type in: <strong>`http:\\localhost:8000\`</strong> and you should now see the ISAN Starmap loading.
+
+
+## Without Docker
+
 ### Prerequisites
 
 Ensure you have nodejs installed on your computer (can check by running the command `node -v`). If you don't then go to https://nodejs.org/en/ and follow the instructions.
@@ -106,13 +135,13 @@ Ensure you have nodejs installed on your computer (can check by running the comm
    ```sh
    npm install
    ```
-3. Create a new file called <strong>`.env`</strong> (in the same directory). 
+3. Create a new file called <strong>`.env`</strong> (in the same directory).
    <br>
    Copy this into that file and save:
       ```js
       PORT=80
       ```
-4. Create a new file called <strong>`env.js`</strong>, place this file in the <strong>`public\js`</strong> folder. 
+4. Create a new file called <strong>`env.js`</strong>, place this file in the <strong>`public\js`</strong> folder.
 <br>The content of the file should be:
    ```js
    export const ENV_FROM_ENVJS = "remoteDev";
